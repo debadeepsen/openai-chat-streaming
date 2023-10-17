@@ -1,4 +1,18 @@
+# OpenAI Chat Streaming
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Prerequisite
+
+Get an API key from OpenAI here - https://platform.openai.com/account/api-keys. 
+
+>You are responsible for all the usage cost. This repository only provides you with the code you can use to call OpenAI's APIs, once you have your own API keys.
+
+Create a `.env.local` file in the project root directory and put that API key in there, like so -
+
+```
+OPENAI_API_KEY=
+```
 
 ## Getting Started
 
