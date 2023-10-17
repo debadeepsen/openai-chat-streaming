@@ -1,5 +1,10 @@
-import { ChatCompletionRequestMessageRoleEnum, Configuration, OpenAIApi } from 'openai-edge'
+import {
+  ChatCompletionRequestMessageRoleEnum,
+  Configuration,
+  OpenAIApi,
+} from 'openai-edge'
 import { OpenAIStream, StreamingTextResponse } from 'ai'
+import { NextResponse } from 'next/server'
 
 export const runtime = 'edge'
 
@@ -10,11 +15,12 @@ const apiConfig = new Configuration({
 const openai = new OpenAIApi(apiConfig)
 
 export async function POST(req: Request) {
+    console.log('POST hit: ' + Date())
   // Extract the `messages` from the body of the request
   const messages = [
     {
       role: ChatCompletionRequestMessageRoleEnum.User,
-      content: 'Who won the world series in 2020?',
+      content: 'Write a 200-word essay on the history of computers',
     },
   ]
   // await req.json()
@@ -36,4 +42,8 @@ export async function POST(req: Request) {
 
   // Respond with the stream
   return new StreamingTextResponse(stream)
+}
+
+export async function GET() {
+  return NextResponse.json({ hello: 'world' })
 }

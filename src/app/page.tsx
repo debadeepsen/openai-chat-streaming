@@ -1,10 +1,10 @@
-import Stream from '@/components/Stream'
+import Chat from '@/components/Chat'
 
 const Home = () => {
   return (
     <>
-      <h1>Home</h1>
-      <Stream />
+      <h1>Chat</h1>
+      <Chat />
     </>
   )
 }
