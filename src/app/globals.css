@@ -1,27 +1,40 @@
-
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Sono&display=swap');
 
 * {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
 }
 
-button, input {
-    @apply p-4 rounded-none border border-solid border-teal-600 outline-teal-600;
+button,
+input {
+  @apply p-4 rounded-none border border-solid border-teal-600 outline-teal-600;
 }
 
 button {
-    border-left-width: 0;
-    color: #fff;
-    @apply bg-teal-600;
+  border-left-width: 0;
+  color: #fff;
+  @apply bg-teal-600;
 }
 
 h1 {
-    @apply text-teal-600;
+  @apply text-teal-600;
 }
 
 .chat-message > div {
-    @apply rounded-xl;
+  @apply rounded-xl;
+}
+
+code {
+  font-family: 'Sono', monospace;
+}
+
+pre, pre * {
+  font-size: 1rem;
+  @apply p-2;
+}
+
+pre {
+  @apply bg-zinc-800/10;
 }

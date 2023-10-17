@@ -2,11 +2,13 @@
 
 import { useChat } from 'ai/react'
 import SendIcon from './SendIcon'
+import { marked } from 'marked'
 
-export default function Stream() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: '/api/chat',
-  })
+const Chat = () => {
+  const { messages, input, handleInputChange, handleSubmit, isLoading } =
+    useChat({
+      api: '/api/chat',
+    })
 
   return (
     <div>
@@ -23,7 +25,13 @@ export default function Stream() {
                   ' p-4 mb-4 basis-full'
                 }
               >
-                {m.content}
+                <div
+                  className='inline'
+                  dangerouslySetInnerHTML={{ __html: marked(m.content) }}
+                ></div>
+                {isLoading && m.role === 'assistant' && index === messages.length - 1 && (
+                  <div className='p-2 text-center'>...</div>
+                )}
               </div>
               <div
                 className={m.role === 'assistant' ? 'basis-1/4' : 'basis-0'}
@@ -50,3 +58,5 @@ export default function Stream() {
     </div>
   )
 }
+
+export default Chat

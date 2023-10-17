@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "ai": "^2.2.15",
+    "marked": "^9.1.2",
     "next": "13.5.5",
     "openai-edge": "^1.2.2",
     "react": "^18",
