@@ -4,18 +4,30 @@ import { useChat } from 'ai/react'
 import SendIcon from './SendIcon'
 
 export default function Stream() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
     api: '/api/chat',
   })
 
   return (
     <div>
       {!!messages?.length && (
-        <div className='rounded-sm bg-zinc-200/70 p-4 mb-4 leading-6'>
+        <div className='p-4 mb-4 leading-6'>
           {messages.map((m, index) => (
-            <div key={index} className='flex'>
-              <div className='font-bold'>{m.role === 'user' ? 'User: ' : 'AI: '}</div>
-              <div>{m.content}</div>
+            <div key={index} className='flex chat-message'>
+              <div
+                className={m.role === 'user' ? 'basis-1/4' : 'basis-0'}
+              ></div>
+              <div
+                className={
+                  (m.role === 'user' ? 'bg-teal-600/20' : 'bg-zinc-600/20') +
+                  ' p-4 mb-4 basis-full'
+                }
+              >
+                {m.content}
+              </div>
+              <div
+                className={m.role === 'assistant' ? 'basis-1/4' : 'basis-0'}
+              ></div>
             </div>
           ))}
         </div>

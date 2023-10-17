@@ -15,15 +15,8 @@ const apiConfig = new Configuration({
 const openai = new OpenAIApi(apiConfig)
 
 export async function POST(req: Request) {
-    console.log('POST hit: ' + Date())
   // Extract the `messages` from the body of the request
-  const messages = [
-    {
-      role: ChatCompletionRequestMessageRoleEnum.User,
-      content: 'Write a 200-word essay on the history of computers',
-    },
-  ]
-  // await req.json()
+  const { messages } = await req.json()
 
   // Request the OpenAI API for the response based on the prompt
   const response = await openai.createChatCompletion({
@@ -42,8 +35,4 @@ export async function POST(req: Request) {
 
   // Respond with the stream
   return new StreamingTextResponse(stream)
-}
-
-export async function GET() {
-  return NextResponse.json({ hello: 'world' })
 }

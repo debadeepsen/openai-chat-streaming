@@ -21,3 +21,7 @@ button {
 h1 {
     @apply text-teal-600;
 }
+
+.chat-message > div {
+    @apply rounded-xl;
+}
