@@ -14,8 +14,7 @@ input {
 
 button {
   border-left-width: 0;
-  color: #fff;
-  @apply bg-teal-600;
+  @apply bg-teal-600 cursor-pointer text-white;
 }
 
 h1 {
@@ -31,6 +30,7 @@ code {
 }
 
 pre, pre * {
+  font-family: 'Sono', monospace;
   font-size: 1rem;
   @apply p-2;
 }

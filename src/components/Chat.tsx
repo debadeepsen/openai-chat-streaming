@@ -5,7 +5,7 @@ import SendIcon from './SendIcon'
 import { marked } from 'marked'
 
 const Chat = () => {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } =
+  const { messages, input, handleInputChange, handleSubmit, isLoading, data } =
     useChat({
       api: '/api/chat',
     })
@@ -26,12 +26,15 @@ const Chat = () => {
                 }
               >
                 <div
+                  style={{ fontFamily: 'monospace' }}
                   className='inline'
                   dangerouslySetInnerHTML={{ __html: marked(m.content) }}
                 ></div>
-                {isLoading && m.role === 'assistant' && index === messages.length - 1 && (
-                  <div className='p-2 text-center'>...</div>
-                )}
+                {isLoading &&
+                  m.role === 'assistant' &&
+                  index === messages.length - 1 && (
+                    <div className='p-2 text-center'>...</div>
+                  )}
               </div>
               <div
                 className={m.role === 'assistant' ? 'basis-1/4' : 'basis-0'}
@@ -40,6 +43,8 @@ const Chat = () => {
           ))}
         </div>
       )}
+
+      {data && <>{JSON.stringify(data)}</>}
 
       <form onSubmit={handleSubmit}>
         <div className='flex'>
